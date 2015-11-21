@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calcular</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+	<style>
+	.card {
+		padding: 16px 0;
+	}
+
+	.card__calc {
+		margin-bottom: 16px;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="card">
+				<div class="col-sm-4">
+					<img src="https://placeholdit.imgix.net/~text?txtsize=38&txt=400%C3%97600&w=400&h=600" alt="" class="img-responsive">
+				</div>
+				<div class="col-sm-8">
+					<p>Size : 90cm * 50cm</p>
+					<h1>Calcular</h1>
+					<div class="card__calc">
+						<input type="hidden" value="90" id="tw">
+						<input type="hidden" value="50" id="th">
+						<div class="row clearfix">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="cw">Ancho:&nbsp;<span class="label label-danger">metros</span></label>
+									<input type="text" id="cw" class="form-control">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="ch">Alto:&nbsp;<span class="label label-danger">metros</span></label>
+									<input type="text" id="ch" class="form-control">
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<button id="btn-calc" class="btn btn-block btn-primary">Calcular</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group" id="card-dec">
+						<label for="">Sin redondear</label>
+						<input type="text" class="form-control" id="count-dec">
+					</div>
+					<div class="form-group">
+
+						<label for="">Cantidad</label>
+						<input type="text" value="1" name="cantidad" class="count-input form-control" id="count">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="calc.js"></script>
+</body>
+</html>
