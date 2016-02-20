@@ -38,8 +38,8 @@
 			// redondeado
 			//count.val(Math.ceil(area));
 
-			var a = Math.floor(client.width / size.width);
-			var b = Math.floor(client.height / size.height);
+			var a = Math.floor(client.width / size.height);
+			var b = Math.floor(client.height / size.width);
 			console.log(a);
 			console.log(b);
 
