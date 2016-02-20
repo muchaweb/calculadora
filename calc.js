@@ -1,56 +1,53 @@
-;(function() {
+$(function () {
 
-	// cm ÷ 100 = m
-	// m x 100 = cm
+  var
+    paperSize = {
+      width: $('#tw').val(),
+      height: $('#th').val(),
+    },
 
-	// tamaño del pliego de tapiz en mts
-	var size = {
-		width : $('#tw').val() / 100, 
-		height : $('#th').val() / 100, 
-	};
+    button = $('a#btn-calc'),
 
-	var btn = $('#btn-calc');
-	var area = 0;
-	var count = $('#count');
-	var coardDec = $('#card-dec');
+    quantity = $('input#input-quantity'),
 
-	coardDec.hide();
+    validate = function (val) {
+      
+      return $.trim(val).length && $.isNumeric(val)
+    },
 
-	btn.on('click', function(event){
-		event.preventDefault();
-		calcArea();
-	});
+    getArea = function () {
+      var client = {
 
-	function calcArea() {
-		var client = {
-			width : $('#cw').val(),
-			height : $('#ch').val()
-		};
+        width: $('#cw').val(),
+        height: $('#ch').val(),
 
-		if (! (validate(client.width) && validate(client.height))) {
-			alert('must be a number consisting of one or more digits');
-		}else {
-			area = (client.width * client.height) / (size.width * size.height) ;
-			// sin redondear
-			coardDec.find('input').val(area);
-			coardDec.show();
+        getSize: function () {
+          return {
+            'width': parseInt(this.width, 10) * 100,
+            'height': parseInt(this.height, 10) * 100,
+          };
+        }
+      };
 
-			// redondeado
-			//count.val(Math.ceil(area));
+      if (!(validate(client.width) && validate(client.height))) {
+        alert('must be a number consisting of one or more digits');
+        return;
+      }
 
-			var a = Math.floor(client.width / size.width);
-			var b = Math.floor(client.height / size.height);
-			console.log(a);
-			console.log(b);
+      var 
+        a = Math.floor(client.getSize().width / paperSize.width),
+        b = Math.floor(client.getSize().height / paperSize.height),
+        numero = (a * b) + a + b - 1;
+      
+      quantity = numero == - 1 ? 1 : numero;
+      console.log(quantity);
 
-			var numero = (a*b) + a + b - 1;
-			console.log(numero);
-			count.val(numero);
-		}
-		
-		function validate(val) {
-			return /^\d+$/.test(val);
-		}
-	}
+    };
 
-})(jQuery || window.jQuery);
+  button.on('click', function (event) {
+    event.preventDefault();
+    getArea();
+  });
+
+
+});
