@@ -34,8 +34,18 @@
 			// sin redondear
 			coardDec.find('input').val(area);
 			coardDec.show();
+
 			// redondeado
-			count.val(Math.ceil(area));
+			//count.val(Math.ceil(area));
+
+			var a = Math.floor(client.width / size.width);
+			var b = Math.floor(client.height / size.height);
+			console.log(a);
+			console.log(b);
+
+			var numero = (a*b) + a + b - 1;
+			console.log(numero);
+			count.val(numero);
 		}
 		
 		function validate(val) {
